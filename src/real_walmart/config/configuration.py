@@ -1,6 +1,6 @@
 from real_walmart.constants import *
 from real_walmart.utils.common import read_yaml, create_directories
-from real_walmart.entity import (DataIngestionConfig , DataValidationConfig, DataTransformationConfig) 
+from real_walmart.entity import (DataIngestionConfig , DataValidationConfig, DataTransformationConfig, ModelTrainerConfig) 
 
 class ConfigurationManager:
     def __init__(
@@ -54,3 +54,16 @@ class ConfigurationManager:
         )
 
         return data_transformation_config
+    
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        config = self.config.model_trainer
+
+        create_directories([config.root_dir])
+
+        model_trainer_config = ModelTrainerConfig(
+            root_dir=config.root_dir,
+            train_data_path=config.train_data_path,
+            model_name=config.model_name
+        )
+
+        return model_trainer_config
