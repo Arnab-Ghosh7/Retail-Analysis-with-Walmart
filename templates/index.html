@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Walmart Weekly Sales Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+        }
+        .container {
+            width: 450px;
+            margin: 60px auto;
+            padding: 25px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #1f2933;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background: #0071ce;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background: #005fa3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 12px;
+            background: #e6f4ea;
+            border-left: 4px solid #34a853;
+            font-weight: bold;
+            text-align: center;
+        }
+        footer {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Walmart Sales Prediction</h2>
+
+    <form method="POST">
+        <label>Store Number</label>
+        <input type="number" name="Store" required>
+
+        <label>Holiday Flag (0 or 1)</label>
+        <input type="number" name="Holiday_Flag" required>
+
+        <label>Temperature (°F)</label>
+        <input type="number" step="any" name="Temperature" required>
+
+        <label>Fuel Price</label>
+        <input type="number" step="any" name="Fuel_Price" required>
+
+        <label>CPI</label>
+        <input type="number" step="any" name="CPI" required>
+
+        <label>Unemployment Rate</label>
+        <input type="number" step="any" name="Unemployment" required>
+
+        <button type="submit">Predict Weekly Sales</button>
+    </form>
+
+    {% if prediction %}
+        <div class="result">
+            Predicted Weekly Sales: {{ prediction }}
+        </div>
+    {% endif %}
+
+    <footer>
+        Built with Flask & Machine Learning
+    </footer>
+</div>
+
+</body>
+</html>

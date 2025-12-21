@@ -45,4 +45,6 @@ class ModelTrainerConfig:
 @dataclass(frozen=True)
 class ModelEvaluationConfig:
     root_dir: Path
+    test_data_path: Path
+    model_path: Path
     metric_file_name: Path
